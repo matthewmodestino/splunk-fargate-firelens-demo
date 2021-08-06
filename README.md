@@ -82,7 +82,7 @@ Pull the `splunk/splunk-fluentd-hec:latest` image
 
 ## Pull the demo configs to your local machine
 
-git clone https://github.com/matthewmodestino/splunk-fargate-firelens-demo.git
+`git clone https://github.com/matthewmodestino/splunk-fargate-firelens-demo.git`
 
 ## Review the Dockerfile
 
