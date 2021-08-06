@@ -130,6 +130,7 @@ Deploy the included task definition. Once running you should see logs in Splunk 
 # Tips,Tricks & Troubleshoot
 
 This fluentd example was based on the great work here:
+
 https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/d63a87a9c5d18e8857551f362cba1472ec7feb15/examples/fluent-bit/config-file-type-file/task-definition.json#L34-L47
 
 You may find it handy to have a JSON linter close by https://jsonlint.com/ when working with task definitions!
