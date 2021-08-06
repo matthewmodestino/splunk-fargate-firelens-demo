@@ -102,9 +102,7 @@ Update your token either with Splunk O11y token or Splunk Cloud HEC Token
 docker build -t splunk-firelens-demo .
 docker tag splunk-firelens-demo:latest public.ecr.aws/XXXXXX/splunk-firelens-demo:latest
 docker push public.ecr.aws/XXXXXX/splunk-firelens-demo:latest
-
 ```
-
 Now that `log_router` container is ready an has been seeded with it's config, we can prepare and deploy a task definition that tells firelens how to deploy our image:  
 
 ## Review the Demo Task Definition
