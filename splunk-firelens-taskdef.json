@@ -81,7 +81,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "public.ecr.aws/s3f6a5b6/splunk-firelens-demo:latest",
+      "image": "public.ecr.aws/XXXXXXXX/splunk-firelens-demo:latest",
       "startTimeout": null,
       "firelensConfiguration": {
         "type": "fluentd",
@@ -114,7 +114,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ca-central-1:350508724858:task-definition/SplunkFargate:10",
+  "taskDefinitionArn": "arn:aws:ecs:ca-central-1:XXXXXXXXXXXX:task-definition/SplunkFargate:10",
   "family": "SplunkFargate",
   "requiresAttributes": [
     {
