@@ -1,6 +1,6 @@
 # splunk-fargate-firelens-demo
 
-Collect logs from AWS ECS Fargate workloads using splunk/fluentd-hec and AWS Firelens log router and send to Splunk Enterprise Cloud and Splunk Observability Cloud!
+Collect logs from AWS ECS Fargate workloads using `splunk/fluentd-hec` Firelens log router and send to Splunk Enterprise Cloud and Splunk Observability Cloud!
 
 ## What is `splunk/fluentd-hec`?
 
