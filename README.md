@@ -109,7 +109,7 @@ Now that `log_router` container is ready an has been seeded with it's config, we
 
 ## Review the Demo Task Definition
 
-The demo task definition included deploys an nginx container that can be exposed using an ALB with an HTTP:80 port listner. 
+The demo task definition included deploys an nginx container that can be exposed using an ALB with an HTTP:80 port listener. 
 
 The key is to make sure our firelens config points to the file we seeded in out `splunk/fluentd-hec` container. 
 
