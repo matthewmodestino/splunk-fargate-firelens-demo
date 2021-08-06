@@ -9,7 +9,9 @@ It is the "logging container" Splunk ships as part of the Splunk Connect for Kub
 It contains useful open source fluentd plugins and configurations that can be leveraged in ECS and beyond!
 
 https://github.com/splunk/fluent-plugin-splunk-hec
+
 https://hub.docker.com/r/splunk/fluentd-hec/tags?page=1&ordering=last_updated
+
 https://github.com/splunk/splunk-connect-for-kubernetes/tree/develop/firelens
 
 ## What is AWS Firelens?
