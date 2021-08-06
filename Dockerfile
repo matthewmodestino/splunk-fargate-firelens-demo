@@ -1,4 +1,4 @@
-# Start with the Generally Available splunk-fluentd-hec docker image.
+# Start with the Generally Available splunk/fluentd-hec docker image.
 # Source available here: https://github.com/splunk/fluent-plugin-splunk-hec
 # Published Image available here: https://hub.docker.com/r/splunk/fluentd-hec
  
