@@ -88,13 +88,59 @@ Pull the `splunk/splunk-fluentd-hec:latest` image
 
 `vi Dockerfile`
 
-The Dockefile is very simple and just copies our custom fluentd config into the `splunk/fluentd-hec` container filesystem.
+The Dockerfile is very simple. It adds our custom fluentd config into the `splunk/fluentd-hec` container filesystem. We will reference this location in our Task Definition. 
 
 ## Review and Update your splunk/fluentd-hec config file
 
 `vi splunk-firelens-demo.conf`
 
 Update your token either with Splunk O11y token or Splunk Cloud HEC Token
+
+For Splunk Observability Cloud Log Observer:
+
+https://docs.splunk.com/Observability/logs/logs.html
+
+```
+<match **>
+  @type splunk_hec
+  protocol https
+  hec_host "ingest.$YOUR_REALM_HERE.signalfx.com"           
+  hec_port 443
+  hec_token $YOUR_TOKEN_HERE
+  host_key ecs_task_arn 
+  source_key ecs_cluster
+  sourcetype_key ecs_task_definition
+  <fields>
+    container_id
+    container_name
+    ecs_task_arn
+    ecs_cluster
+    source
+  </fields>
+```
+
+For Splunk Enterprise Cloud:
+
+https://docs.splunk.com/Documentation/SplunkCloud/8.2.2106/Data/UsetheHTTPEventCollector#Send_data_to_HTTP_Event_Collector_on_Splunk_Cloud
+
+```
+<match **>
+  @type splunk_hec
+  protocol https
+  hec_host "https-inputs-$SPLUNK_CLOUD_HOST"           
+  hec_port 443
+  hec_token $YOUR_TOKEN_HERE
+  host_key ecs_task_arn 
+  source_key ecs_cluster
+  sourcetype_key ecs_task_definition
+  <fields>
+    container_id
+    container_name
+    ecs_task_arn
+    ecs_cluster
+    source
+  </fields>
+```
 
 ## Build your Docker Image and Push to your Registry
 
@@ -103,6 +149,7 @@ docker build -t splunk-firelens-demo .
 docker tag splunk-firelens-demo:latest public.ecr.aws/XXXXXX/splunk-firelens-demo:latest
 docker push public.ecr.aws/XXXXXX/splunk-firelens-demo:latest
 ```
+
 Now that `log_router` container is ready an has been seeded with it's config, we can prepare and deploy a task definition that tells firelens how to deploy our image:  
 
 ## Review the Demo Task Definition
@@ -123,12 +170,12 @@ The key is to make sure our firelens config points to the file we seeded in out 
 
 # Deploy Task Definition
 
-Deploy the included task definition. Once running you should see logs in Splunk Cloud or Splunk O11y Cloud Log Observer
+Deploy the included task definition on Fargate. 
 
 # Tips,Tricks & Troubleshoot
 
 This fluentd example was based on the great work here:
 
-https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/d63a87a9c5d18e8857551f362cba1472ec7feb15/examples/fluent-bit/config-file-type-file/task-definition.json#L34-L47
+https://github.com/aws-samples/amazon-ecs-firelens-examples
 
-You may find it handy to have a JSON linter close by https://jsonlint.com/ when working with task definitions!
+You may find it handy to have a JSON linter close by when working with task definitions! - https://jsonlint.com/ 
