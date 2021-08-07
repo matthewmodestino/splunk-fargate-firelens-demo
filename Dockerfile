@@ -4,6 +4,6 @@
  
 FROM splunk/fluentd-hec:latest
 
-#Seed custom fluentd config for AWS Firelens log router image deploy of splunk-fluentd-hec
+#Seed custom fluentd config for AWS Firelens log router image deploy of splunk/fluentd-hec
 
 ADD splunk-firelens-demo.conf /splunk-firelens-demo.conf
