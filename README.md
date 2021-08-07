@@ -27,7 +27,7 @@ https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-taskdef.htm
 ## Requirements
 
   - AWS CLI, ECS Fargate & Elastic Container Registry access
-  - The latest splunk/fluentd-hec docker image
+  - The latest `splunk/fluentd-hec` docker image
   - A fluentd configuration file
   - A Splunk Cloud and/or Splunk O11y Cloud Instance and token 
   - An ECS Task Definiton
@@ -42,6 +42,10 @@ Ensure you have the latest awscli installed for your local machine.
 ## AWS IAM User
 
 You will need an IAM user who has admin access to push your custom fluentd-hec image to ECR and to deploy ECS Fargate resources.  
+
+https://docs.aws.amazon.com/AmazonECR/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-AmazonEC2ContainerRegistryFullAccess
+
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html
 
 ## Set your credentials
 
@@ -172,6 +176,7 @@ The key is to make sure our firelens config points to the file we seeded in out 
 
 Deploy the included task definition on Fargate. 
 
+
 # Tips,Tricks & Troubleshoot
 
 This fluentd example was based on the great work here:
@@ -179,3 +184,6 @@ This fluentd example was based on the great work here:
 https://github.com/aws-samples/amazon-ecs-firelens-examples
 
 You may find it handy to have a JSON linter close by when working with task definitions! - https://jsonlint.com/ 
+
+Will explore adding more custom keys to the records as needed.
+
