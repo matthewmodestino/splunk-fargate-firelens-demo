@@ -78,15 +78,15 @@ Example:
 
 `aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin XXXXXXXX.ecr.aws/XXXXXXXXX`
 
-## Create your custom splunk/fluentd-hec image
+## Create your custom `splunk/fluentd-hec` Firelens image!
 
 Pull the `splunk/splunk-fluentd-hec:latest` image 
 
-100 Milli pull club!! :) 🎉 
+Note the 100 Milli pull club!! :) 🎉 
 
 `docker pull splunk/fluentd-hec`
 
-## Pull the demo configs to your local machine
+## Pull demo configs to your local machine
 
 `git clone https://github.com/matthewmodestino/splunk-fargate-firelens-demo.git`
 
@@ -94,13 +94,15 @@ Pull the `splunk/splunk-fluentd-hec:latest` image
 
 `vi Dockerfile`
 
-The Dockerfile is very simple. It adds our custom fluentd config into the `splunk/fluentd-hec` container filesystem. We will reference this location in our Task Definition. 
+The Dockerfile is very simple. 
+
+It adds our custom fluentd config into the `splunk/fluentd-hec` container filesystem. We will reference this location in our Task Definition when configuring AWS Firelens log_router. 
 
 ## Review and Update your splunk/fluentd-hec config file
 
 `vi splunk-firelens-demo.conf`
 
-Update your token either with Splunk O11y token or Splunk Cloud HEC Token
+Update this file as you wish. At minimum add your `hec_host` and  `hec_token` either with Splunk O11y token or Splunk Cloud HEC Token
 
 For Splunk Observability Cloud Log Observer:
 
@@ -148,7 +150,15 @@ https://docs.splunk.com/Documentation/SplunkCloud/8.2.2106/Data/UsetheHTTPEventC
   </fields>
 ```
 
+## Why not Both?!
+
+See "Fluentd Copy Plugin" example in Splunk O11y docs!
+
+https://docs.splunk.com/Observability/logs/logs.html
+
 ## Build your Docker Image and Push to your Registry
+
+From inside the repo you have pulled locally, run the following commands, updated accordingly for your AWS environment. 
 
 ```
 docker build -t splunk-firelens-demo .
@@ -160,7 +170,7 @@ Now that `log_router` container is ready an has been seeded with it's config, we
 
 ## Review the Demo Task Definition
 
-The demo task definition included deploys an nginx container that can be exposed using an ALB with an HTTP:80 port listener. 
+The demo Fargate Task Definition deploys a nginx container that can be exposed using an ALB with an HTTP:80 port listener. 
 
 The key is to make sure our firelens config points to the file we seeded in out `splunk/fluentd-hec` container. 
 
@@ -174,9 +184,15 @@ The key is to make sure our firelens config points to the file we seeded in out 
 }
 ```
 
-# Deploy Task Definition
+## Deploy Task Definition
 
-Deploy the included task definition on Fargate. 
+Deploy the included task definition on Fargate, using the AWS UI. 
+
+
+## Review the data in Splunk!
+
+Whether sending to Splunk Enterise Cloud or Splunk Observability Cloud, review the data is being received and that the fields we mapped in the fluentd config make sense for you!
+
 
 
 # Tips,Tricks & Troubleshoot
