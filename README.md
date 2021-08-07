@@ -18,7 +18,9 @@ https://github.com/splunk/splunk-connect-for-kubernetes/tree/develop/firelens
 
 With fluentd and fluent-bit becoming a common open source agent, AWS and partners like Splunk, provide Firelens options to help you configure fluentd/fluent-bit inputs, filters and output configurations.
 
-Splunk currently publishes/supports a fluentd firelens option. https://github.com/splunk/splunk-connect-for-kubernetes/tree/develop/firelens
+Splunk currently publishes/supports a fluentd firelens option. 
+
+https://github.com/splunk/splunk-connect-for-kubernetes/tree/develop/firelens
 
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-taskdef.html 
 
